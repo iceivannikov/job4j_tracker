@@ -26,10 +26,10 @@ public class Calculator {
     public static void main(String[] args) {
         int result = Calculator.sum(10);
         System.out.println(result);
-        System.out.println(Calculator.minus(10));
+        Calculator.minus(10);
         Calculator calculator = new Calculator();
-        System.out.println(calculator.multiply(5));
-        System.out.println(calculator.divide(5));
-        System.out.println(calculator.sumAllOperation(100));
+        calculator.multiply(5);
+        calculator.divide(5);
+        calculator.sumAllOperation(100);
     }
 }
