@@ -11,19 +11,13 @@ public class Matches {
         while (count > 0) {
             String player = turn ? "Первый игрок" : "Второй игрок";
             System.out.println(player + " введите число от 1 до 3:");
-            if (input.hasNextInt()) {
-                int matches = input.nextInt();
-                if (matches > 0 && matches < 4 && count >= matches) {
-                    count -= matches;
-                    System.out.printf("На столе осталось %d спичек\n", count);
-                    turn = !turn;
-                } else {
-                    System.out.println("Число должно быть от 1 до 3 и число не может превышать остаток спичек");
-                    input.nextLine();
-                }
+            int matches = Integer.parseInt(input.nextLine());
+            if (matches > 0 && matches <= Math.min(3, count)) {
+                count -= matches;
+                System.out.printf("На столе осталось %d спичек\n", count);
+                turn = !turn;
             } else {
-                System.out.println("Ошибка: введено не число. Пожалуйста, введите число от 1 до 3.");
-                input.nextLine();
+                System.out.println("Число должно быть от 1 до 3 и число не может превышать остаток спичек");
             }
         }
         if (!turn) {
