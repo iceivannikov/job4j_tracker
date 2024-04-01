@@ -1,19 +1,26 @@
 package ru.job4j.tracker;
 
 import org.junit.jupiter.api.Test;
+import ru.job4j.tracker.action.*;
+import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.input.Mock;
+import ru.job4j.tracker.model.Item;
+import ru.job4j.tracker.output.Output;
+import ru.job4j.tracker.output.Stub;
+import ru.job4j.tracker.storage.Tracker;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class StartUITest {
     @Test
     void whenCreateItem() {
-        Output output = new StubOutput();
+        Output output = new Stub();
         Tracker tracker = new Tracker();
-        Input input = new MockInput(
+        Input input = new Mock(
                 new String[]{"0", "Item name", "1"}
         );
         UserAction[] actions = {
-                new CreateAction(output),
+                new Create(output),
                 new ExitAction(output)
         };
         new StartUI(output).init(input, tracker, actions);
@@ -22,16 +29,16 @@ class StartUITest {
 
     @Test
     void whenReplaceItem() {
-        Output output = new StubOutput();
+        Output output = new Stub();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Replaced item"));
         String id = String.valueOf(item.getId());
         String replacedName = "New item name";
-        Input input = new MockInput(
+        Input input = new Mock(
                 new String[]{"0", id, replacedName, "1"}
         );
         UserAction[] actions = {
-                new ReplaceAction(output),
+                new Replace(output),
                 new ExitAction(output)
         };
         new StartUI(output).init(input, tracker, actions);
@@ -40,15 +47,15 @@ class StartUITest {
 
     @Test
     void whenDeleteItem() {
-        Output output = new StubOutput();
+        Output output = new Stub();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Deleted item"));
         String id = String.valueOf(item.getId());
-        Input input = new MockInput(
+        Input input = new Mock(
                 new String[]{"0", id, "1"}
         );
         UserAction[] actions = {
-                new DeleteAction(output),
+                new Delete(output),
                 new ExitAction(output)
         };
         new StartUI(output).init(input, tracker, actions);
@@ -57,16 +64,16 @@ class StartUITest {
 
     @Test
     void whenReplaceItemTestOutputIsSuccessfully() {
-        Output output = new StubOutput();
+        Output output = new Stub();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
         String replaceName = "New Test Name";
         String id = String.valueOf(one.getId());
-        Input input = new MockInput(
+        Input input = new Mock(
                 new String[]{"0", id, replaceName, "1"}
         );
         UserAction[] actions = new UserAction[]{
-                new ReplaceAction(output),
+                new Replace(output),
                 new ExitAction(output)
         };
         new StartUI(output).init(input, tracker, actions);
@@ -86,14 +93,14 @@ class StartUITest {
 
     @Test
     void whenFindAllActionTestOutputIsSuccessfully() {
-        Output output = new StubOutput();
+        Output output = new Stub();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test1"));
-        Input input = new MockInput(
+        Input input = new Mock(
                 new String[]{"0", "1"}
         );
         UserAction[] actions = new UserAction[]{
-                new FindAllAction(output),
+                new FindAll(output),
                 new ExitAction(output)
         };
         new StartUI(output).init(input, tracker, actions);
@@ -113,14 +120,14 @@ class StartUITest {
 
     @Test
     void whenFindByNameActionTestOutputIsSuccessfully() {
-        Output output = new StubOutput();
+        Output output = new Stub();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test1"));
-        Input input = new MockInput(
+        Input input = new Mock(
                 new String[]{"0", item.getName(), "1"}
         );
         UserAction[] actions = new UserAction[]{
-                new FindByNameAction(output),
+                new FindByName(output),
                 new ExitAction(output)
         };
         new StartUI(output).init(input, tracker, actions);
@@ -140,15 +147,15 @@ class StartUITest {
 
     @Test
     void whenFindByIdActionTestOutputIsSuccessfully() {
-        Output output = new StubOutput();
+        Output output = new Stub();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test1"));
         String id = String.valueOf(item.getId());
-        Input input = new MockInput(
+        Input input = new Mock(
                 new String[]{"0", id, "1"}
         );
         UserAction[] actions = new UserAction[]{
-                new FindByIdAction(output),
+                new FindById(output),
                 new ExitAction(output)
         };
         new StartUI(output).init(input, tracker, actions);
