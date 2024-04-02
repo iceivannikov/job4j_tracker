@@ -48,6 +48,9 @@ public class PasswordValidator {
             if (!Character.isLetterOrDigit(symbol)) {
                 hasSpecial = true;
             }
+            if (hasUpCase && hasLowCase && hasDigit && hasSpecial) {
+                break;
+            }
             /* Блок проверки принадлежности символа к определенной группе - Character.is ... */
         }
         if (!hasUpCase) {
