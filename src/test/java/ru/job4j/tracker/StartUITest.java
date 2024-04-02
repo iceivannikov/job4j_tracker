@@ -20,7 +20,7 @@ class StartUITest {
                 new String[]{"0", "Item name", "1"}
         );
         UserAction[] actions = {
-                new Create(output),
+                new CreateAction(output),
                 new ExitAction(output)
         };
         new StartUI(output).init(input, tracker, actions);
@@ -38,7 +38,7 @@ class StartUITest {
                 new String[]{"0", id, replacedName, "1"}
         );
         UserAction[] actions = {
-                new Replace(output),
+                new ReplaceAction(output),
                 new ExitAction(output)
         };
         new StartUI(output).init(input, tracker, actions);
@@ -55,7 +55,7 @@ class StartUITest {
                 new String[]{"0", id, "1"}
         );
         UserAction[] actions = {
-                new Delete(output),
+                new DeleteAction(output),
                 new ExitAction(output)
         };
         new StartUI(output).init(input, tracker, actions);
@@ -73,7 +73,7 @@ class StartUITest {
                 new String[]{"0", id, replaceName, "1"}
         );
         UserAction[] actions = new UserAction[]{
-                new Replace(output),
+                new ReplaceAction(output),
                 new ExitAction(output)
         };
         new StartUI(output).init(input, tracker, actions);
@@ -100,7 +100,7 @@ class StartUITest {
                 new String[]{"0", "1"}
         );
         UserAction[] actions = new UserAction[]{
-                new FindAll(output),
+                new FindAllAction(output),
                 new ExitAction(output)
         };
         new StartUI(output).init(input, tracker, actions);
@@ -127,7 +127,7 @@ class StartUITest {
                 new String[]{"0", item.getName(), "1"}
         );
         UserAction[] actions = new UserAction[]{
-                new FindByName(output),
+                new FindByNameAction(output),
                 new ExitAction(output)
         };
         new StartUI(output).init(input, tracker, actions);
@@ -155,7 +155,7 @@ class StartUITest {
                 new String[]{"0", id, "1"}
         );
         UserAction[] actions = new UserAction[]{
-                new FindById(output),
+                new FindByIdAction(output),
                 new ExitAction(output)
         };
         new StartUI(output).init(input, tracker, actions);

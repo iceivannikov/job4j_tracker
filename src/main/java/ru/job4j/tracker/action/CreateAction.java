@@ -5,10 +5,10 @@ import ru.job4j.tracker.model.Item;
 import ru.job4j.tracker.output.Output;
 import ru.job4j.tracker.storage.Tracker;
 
-public class Create implements UserAction {
+public class CreateAction implements UserAction {
     private final Output output;
 
-    public Create(Output output) {
+    public CreateAction(Output output) {
         this.output = output;
     }
 
