@@ -4,17 +4,14 @@ import ru.job4j.tracker.model.Item;
 import ru.job4j.tracker.storage.Tracker;
 
 public class SingleTracker {
-    private static SingleTracker instance = null;
+    private static final SingleTracker INSTANCE = new SingleTracker();
     private final Tracker tracker = new Tracker();
 
     private SingleTracker() {
     }
 
     public static SingleTracker getInstance() {
-        if (instance == null) {
-            instance = new SingleTracker();
-        }
-        return instance;
+        return INSTANCE;
     }
 
     public Item add(Item item) {
