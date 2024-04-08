@@ -30,25 +30,39 @@ public class Tracker {
     }
 
     public Item findById(int id) {
-        for (Item item : items) {
-            if (item.getId() == id) {
-                return item;
-            }
-        }
-        return null;
+        int index = indexOf(id);
+        return isIndexExists(index) ? items.get(index) : null;
     }
 
     public boolean replace(int id, Item item) {
-        boolean result = false;
-        Item replace = findById(id);
-        if (replace != null) {
-            replace.setName(item.getName());
-            result = true;
+        int index = indexOf(id);
+        boolean result = isIndexExists(index);
+        if (result) {
+            item.setId(id);
+            items.set(index, item);
         }
         return result;
     }
 
     public void delete(int id) {
-        items.remove(findById(id));
+        int index = indexOf(id);
+        if (isIndexExists(index)) {
+            items.remove(index);
+        }
+    }
+
+    private int indexOf(int id) {
+        int result = -1;
+        for (int index = 0; index < items.size(); index++) {
+            if (items.get(index).getId() == id) {
+                result = index;
+                break;
+            }
+        }
+        return result;
+    }
+
+    private boolean isIndexExists(int index) {
+        return index != -1;
     }
 }
