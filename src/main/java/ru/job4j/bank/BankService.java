@@ -13,10 +13,7 @@ public class BankService {
     }
 
     public void deleteUser(String passport) {
-        User user = findByPassport(passport);
-        if (isUserExist(user)) {
-            users.remove(user);
-        }
+        users.remove(new User(passport, ""));
     }
 
     public void addAccount(String passport, Account account) {
@@ -30,9 +27,9 @@ public class BankService {
     }
 
     public User findByPassport(String passport) {
-        for (Map.Entry<User, List<Account>> entry : users.entrySet()) {
-            if (entry.getKey().getPassport().equals(passport)) {
-                return entry.getKey();
+        for (User user : users.keySet()) {
+            if (user.getPassport().equals(passport)) {
+                return user;
             }
         }
         return null;
@@ -40,11 +37,8 @@ public class BankService {
 
     public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
-        List<Account> accounts = null;
         if (isUserExist(user)) {
-            accounts = getAccounts(user);
-        }
-        if (accounts != null) {
+            List<Account> accounts = getAccounts(user);
             for (Account account : accounts) {
                 if (account.getRequisite().equals(requisite)) {
                     return account;
