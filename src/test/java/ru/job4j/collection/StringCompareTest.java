@@ -84,15 +84,6 @@ class StringCompareTest {
     }
 
     @Test
-    public void whenStringsDifferInCaseThenThenZero() {
-        StringCompare compare = new StringCompare();
-        int result = compare.compare(
-                "Ivanov",
-                "ivanov");
-        assertThat(result).isEqualTo(0);
-    }
-
-    @Test
     public void whenStringsDifferInNonAlphabetCharsThenPositive() {
         StringCompare compare = new StringCompare();
         int result = compare.compare(
