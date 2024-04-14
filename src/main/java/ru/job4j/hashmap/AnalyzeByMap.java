@@ -81,10 +81,7 @@ public class AnalyzeByMap {
         for (Pupil pupil : pupils) {
             List<Subject> subjects = pupil.subjects();
             for (Subject subject : subjects) {
-                String name = subject.name();
-                int sumScore = subject.score();
-                int currentScore = map.getOrDefault(name, 0);
-                map.put(name, currentScore + sumScore);
+                map.merge(subject.name(), subject.score(), Integer::sum);
             }
         }
         return map;
