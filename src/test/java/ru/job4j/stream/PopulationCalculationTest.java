@@ -13,7 +13,7 @@ class PopulationCalculationTest {
     public void whenNoCitiesThanZero() {
         Country country = new Country(List.of(), "TestCountry");
         Stream<Country> countryStream = Stream.of(country);
-        long result = PopulationCalculation.getSumPopulationFor(countryStream, 1000);
+        long result = PopulationCalculation.getSumPopulationFor(countryStream, 900);
         assertThat(result).isEqualTo(0);
     }
 
