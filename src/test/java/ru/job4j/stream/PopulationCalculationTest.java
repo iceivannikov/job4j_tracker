@@ -21,7 +21,7 @@ class PopulationCalculationTest {
     public void whenCitiesBelowThresholdThanZero() {
         City city1 = new City("City1", 500);
         City city2 = new City("City2", 700);
-        Country country = new Country(List.of(city1, city2),"TestCountry");
+        Country country = new Country(List.of(city1, city2), "TestCountry");
         Stream<Country> countryStream = Stream.of(country);
         long result = PopulationCalculation.getSumPopulationFor(countryStream, 1000);
         assertThat(result).isEqualTo(0);
@@ -33,8 +33,8 @@ class PopulationCalculationTest {
         City city2 = new City("City2", 1700);
         City city3 = new City("City3", 2000);
         Country country1 = new Country(List.of(city1, city2), "TestCountry1");
-        Country country2 = new Country(List.of(city1),"TestCountry2");
-        Country country3 = new Country(List.of(city3),"TestCountry3");
+        Country country2 = new Country(List.of(city1), "TestCountry2");
+        Country country3 = new Country(List.of(city3), "TestCountry3");
         Stream<Country> countryStream = Stream.of(country1, country2, country3);
         long result = PopulationCalculation.getSumPopulationFor(countryStream, 1000);
         assertThat(result).isEqualTo(6700);
@@ -56,7 +56,7 @@ class PopulationCalculationTest {
         City city2 = new City("City2", 800);
         City city3 = new City("City3", 1500);
         Country country1 = new Country(List.of(city1, city2), "TestCountry1");
-        Country country2 = new Country(List.of(city3),"TestCountry2");
+        Country country2 = new Country(List.of(city3), "TestCountry2");
         Stream<Country> countryStream = Stream.of(country1, country2);
         long result = PopulationCalculation.getSumPopulationFor(countryStream, 1000);
         assertThat(result).isEqualTo(2700);
@@ -67,7 +67,7 @@ class PopulationCalculationTest {
         City city1 = new City("City1", 500);
         City city2 = new City("City2", 700);
         Country country1 = new Country(List.of(city1, city2), "TestCountry1");
-        Country country2 = new Country(List.of(city1),"TestCountry2");
+        Country country2 = new Country(List.of(city1), "TestCountry2");
         Stream<Country> countryStream = Stream.of(country1, country2);
         long result = PopulationCalculation.getSumPopulationFor(countryStream, 1000);
         assertThat(result).isEqualTo(0);
