@@ -53,12 +53,11 @@ public class Analyze {
         Map<String, Double> collect = stream.flatMap(pupil -> pupil.subjects().stream())
                 .collect(Collectors.groupingBy(
                         Subject::name,
-                        LinkedHashMap::new,
                         Collectors.summingDouble(Subject::score)));
         return collect.entrySet()
                 .stream()
                 .map(entry -> new Tuple(entry.getKey(), entry.getValue()))
                 .max(Comparator.comparingDouble(Tuple::score))
-                .orElse(new Tuple("", 0));
+                .orElse(null);
     }
 }
