@@ -43,6 +43,11 @@ public class SqlTracker implements Store {
             ps.setString(1, item.getName());
             ps.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
             ps.executeUpdate();
+            try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    item.setId(generatedKeys.getInt(1));  // Получаем сгенерированный id
+                }
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -70,12 +75,12 @@ public class SqlTracker implements Store {
         String sql = "DELETE FROM items WHERE id = ?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setInt(1, id);
-            ps.executeUpdate();
+            int rowsDeleted = ps.executeUpdate();
+            if (rowsDeleted == 0) {
+                throw new IllegalStateException("No item found with id: " + id);
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }
-        if (findById(id) != null) {
-            throw new IllegalStateException("Failed to delete item with id: " + id);
         }
     }
 
