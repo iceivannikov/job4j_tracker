@@ -45,7 +45,7 @@ public class SqlTracker implements Store {
             ps.executeUpdate();
             try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
-                    item.setId(generatedKeys.getInt(1));  // Получаем сгенерированный id
+                    item.setId(generatedKeys.getInt(1));
                 }
             }
         } catch (SQLException e) {
