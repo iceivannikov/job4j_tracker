@@ -152,4 +152,3 @@ public class SqlTracker implements Store {
         item.setCreated(rs.getTimestamp("created").toLocalDateTime());
     }
 }
-
