@@ -112,4 +112,20 @@ public class SqlTrackerTest {
         Item foundItem = tracker.findById(id);
         assertThat(foundItem).isEqualTo(item);
     }
+
+    @Test
+    void whenDeleteOneItemThenOtherItemsRemainInDatabase() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item1 = new Item("item1");
+        Item item2 = new Item("item2");
+        Item item3 = new Item("item3");
+        tracker.add(item1);
+        tracker.add(item2);
+        tracker.add(item3);
+        tracker.delete(item2.getId());
+        assertThat(tracker.findById(item2.getId())).isNull();
+        List<Item> remainingItems = tracker.findAll();
+        assertThat(remainingItems).contains(item1, item3);
+        assertThat(remainingItems.size()).isEqualTo(2);
+    }
 }
