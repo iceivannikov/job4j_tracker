@@ -10,7 +10,6 @@ public class Emulator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
-
         while (running) {
             System.out.println("1. Указать кэшируемую директорию");
             System.out.println("2. Загрузить содержимое файла в кэш");
@@ -18,7 +17,7 @@ public class Emulator {
             System.out.println("4. Выход");
             System.out.print("Выберите опцию: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
             switch (choice) {
                 case 1:
                     System.out.print("Введите путь к кэшируемой директории: ");
