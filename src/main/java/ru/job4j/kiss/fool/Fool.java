@@ -21,7 +21,7 @@ public class Fool {
         }
     }
 
-    private static String getFizzBuzzOutput(int number) {
+    static String getFizzBuzzOutput(int number) {
         String result = String.valueOf(number);
         if (number % 3 == 0 && number % 5 == 0) {
             result = "FizzBuzz";
