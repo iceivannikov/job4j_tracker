@@ -7,13 +7,13 @@ public class Shop extends AbstractStore {
 
     @Override
     public boolean accept(Food food) {
-        return ShelfLife.remaining(food) <= 75;
+        return ShelfLife.remaining(food) <= FRESHNESS_THRESHOLD_HIGH;
     }
 
     @Override
     public void add(Food food) {
-        if (ShelfLife.remaining(food) <= 25) {
-            double newPrice = food.getPrice() * 0.8;
+        if (ShelfLife.remaining(food) <= FRESHNESS_THRESHOLD_LOW) {
+            double newPrice = food.getPrice() * DISCOUNT_PERCENTAGE;
             food.setPrice(newPrice);
         }
         super.add(food);
