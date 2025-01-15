@@ -19,7 +19,7 @@ class ParkingLotTest {
     }
 
     @Test
-    void whenCarRemovedThenFreeSpotsIncrease(){
+    void whenCarRemovedThenFreeSpotsIncrease() {
         ParkingLot parkingLot = new OpenParking(10, 5);
         Vehicle truck = new Truck(3);
         parkingLot.parkVehicle(truck);

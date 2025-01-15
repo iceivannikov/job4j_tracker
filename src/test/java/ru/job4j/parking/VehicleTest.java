@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.*;
 @Disabled
 class VehicleTest {
     @Test
-    void whenTruckSize3Then3()  {
+    void whenTruckSize3Then3() {
         Vehicle vehicle = new Truck(3);
         int size = vehicle.getSize();
         assertThat(size).isEqualTo(3);
