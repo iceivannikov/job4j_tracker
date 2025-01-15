@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.*;
 @Disabled
 class ParkingLotTest {
     @Test
-    void WhenParkCarThenNumberFreeParkingSpotsDecreases() {
+    void whenParkCarThenNumberFreeParkingSpotsDecreases() {
         ParkingLot parkingLot = new OpenParking(10, 5);
         parkingLot.parkVehicle(new Car());
         int spotsCount = parkingLot.getAvailablePassengerCarsSpotsCount();
