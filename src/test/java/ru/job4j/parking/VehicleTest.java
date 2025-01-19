@@ -8,7 +8,6 @@ import ru.job4j.parking.vehicle.Vehicle;
 
 import static org.assertj.core.api.Assertions.*;
 
-@Disabled
 class VehicleTest {
     @Test
     void whenTruckSize3Then3() {
@@ -27,14 +26,21 @@ class VehicleTest {
     @Test
     void whenVehiclePassengerCarThenPassengerCar() {
         Vehicle vehicle = new Car();
-        Vehicle car = vehicle.getType();
-        assertThat(car).isEqualTo(vehicle);
+        String type = vehicle.getType();
+        assertThat(type).isEqualTo("Car");
     }
 
     @Test
     void whenVehicleTruckThenTruck() {
         Vehicle vehicle = new Truck(2);
-        Vehicle truck = vehicle.getType();
-        assertThat(truck).isEqualTo(vehicle);
+        String type = vehicle.getType();
+        assertThat(type).isEqualTo("Truck");
+    }
+
+    @Test
+    void whenTruckWithInvalidSizeCreatedThenThrowsException() {
+        assertThatThrownBy(() -> new Truck(0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("The size cannot be less than 2");
     }
 }

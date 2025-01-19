@@ -11,5 +11,5 @@ public interface ParkingSpot {
 
     void removeVehicle();
 
-    ParkingSpot getType();
+    String getType();
 }

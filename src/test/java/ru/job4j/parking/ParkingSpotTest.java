@@ -1,6 +1,5 @@
 package ru.job4j.parking;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import ru.job4j.parking.spot.PassengerCarSpot;
 import ru.job4j.parking.spot.ParkingSpot;
@@ -11,7 +10,6 @@ import ru.job4j.parking.vehicle.Vehicle;
 
 import static org.assertj.core.api.Assertions.*;
 
-@Disabled
 class ParkingSpotTest {
     @Test
     void whenParkingVehicleThenParkingPlaceIsOccupiedThenTrue() {
@@ -33,8 +31,15 @@ class ParkingSpotTest {
     @Test
     void whenParkingPlaceCargoThenTypeCargo() {
         ParkingSpot parkingSpot = new PassengerCarSpot();
-        ParkingSpot type = parkingSpot.getType();
-        assertThat(type).isEqualTo(parkingSpot);
+        String type = parkingSpot.getType();
+        assertThat(type).isEqualTo("PassengerCarSpot");
+    }
+
+    @Test
+    void whenParkingPlaceTruckThenTypeTruck() {
+        ParkingSpot parkingSpot = new TruckSpot();
+        String type = parkingSpot.getType();
+        assertThat(type).isEqualTo("TruckSpot");
     }
 
     @Test
@@ -51,5 +56,24 @@ class ParkingSpotTest {
         Vehicle truck = new Truck(3);
         boolean canFitSpot = parkingSpot.canFitSpot(truck);
         assertThat(canFitSpot).isFalse();
+    }
+
+    @Test
+    void whenParkingVehicleOnOccupiedSpotThenThrowException() {
+        ParkingSpot parkingSpot = new PassengerCarSpot();
+        Vehicle car1 = new Car();
+        Vehicle car2 = new Car();
+        parkingSpot.parkVehicle(car1);
+        assertThatThrownBy(() -> parkingSpot.parkVehicle(car2))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessage("Parking spot is already occupied.");
+    }
+
+    @Test
+    void whenRemoveVehicleFromEmptySpotThenThrowException() {
+        ParkingSpot parkingSpot = new PassengerCarSpot();
+        assertThatThrownBy(parkingSpot::removeVehicle)
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessage("Parking spot is already empty.");
     }
 }

@@ -11,9 +11,4 @@ public abstract class AbstractVehicle implements Vehicle {
     public int getSize() {
         return size;
     }
-
-    @Override
-    public Vehicle getType() {
-        return this;
-    }
 }
