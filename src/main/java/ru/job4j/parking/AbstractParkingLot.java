@@ -9,6 +9,7 @@ import ru.job4j.parking.strategy.park.TruckParkingStrategy;
 import ru.job4j.parking.strategy.remove.RemovePassengerCerStrategy;
 import ru.job4j.parking.strategy.remove.RemoveTruckStrategy;
 import ru.job4j.parking.strategy.remove.RemoveVehicleStrategy;
+import ru.job4j.parking.util.ParkingSpotType;
 import ru.job4j.parking.util.VehicleType;
 import ru.job4j.parking.vehicle.Vehicle;
 
@@ -53,12 +54,12 @@ public abstract class AbstractParkingLot implements ParkingLot {
 
     @Override
     public int getAvailableTruckSpotsCount() {
-        return getAvailableSpotsCount(VehicleType.TRUCK);
+        return getAvailableSpotsCount(ParkingSpotType.TRUCK_SPOT);
     }
 
     @Override
     public int getAvailablePassengerCarsSpotsCount() {
-        return getAvailableSpotsCount(VehicleType.CAR);
+        return getAvailableSpotsCount(ParkingSpotType.PASSENGER_CAR_SPOT);
     }
 
     private void init() {
