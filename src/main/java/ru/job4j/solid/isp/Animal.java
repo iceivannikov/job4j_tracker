@@ -21,7 +21,6 @@ class Dog implements Animal {
 
     @Override
     public void fly() {
-        // Пустая реализация
     }
 
     @Override
