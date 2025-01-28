@@ -85,4 +85,34 @@ class ControlQualityTest {
         assertFalse(warehouse.findAll().contains(discountedFood));
         assertEquals(40.0, discountedFood.getPrice());
     }
+
+    @Test
+    void whenResortThenProductsRedistributedCorrectly() {
+        Trash trash = new Trash();
+        Warehouse warehouse = new Warehouse();
+        Shop shop = new Shop();
+        ControlQuality controlQuality = new ControlQuality(List.of(trash, warehouse, shop));
+        Food expiredFood = new Food("Milk",
+                LocalDate.now().minusDays(1),
+                LocalDate.now().minusDays(10),
+                50.0,
+                0.0f);
+        Food freshFood = new Food("Apple",
+                LocalDate.now().plusDays(20),
+                LocalDate.now().minusDays(5),
+                30.0,
+                0.0f);
+        Food discountedFood = new Food("Bread",
+                LocalDate.now().plusDays(10),
+                LocalDate.now().minusDays(5),
+                40.0,
+                0.0f);
+        trash.add(discountedFood);
+        warehouse.add(expiredFood);
+        shop.add(freshFood);
+        controlQuality.resort();
+        assertTrue(trash.findAll().contains(expiredFood));
+        assertTrue(warehouse.findAll().contains(freshFood));
+        assertTrue(shop.findAll().contains(discountedFood));
+    }
 }

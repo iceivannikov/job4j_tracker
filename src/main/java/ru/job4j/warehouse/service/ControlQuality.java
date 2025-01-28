@@ -3,6 +3,7 @@ package ru.job4j.warehouse.service;
 import ru.job4j.warehouse.model.Food;
 import ru.job4j.warehouse.storage.Store;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControlQuality {
@@ -18,6 +19,17 @@ public class ControlQuality {
                 store.add(food);
                 break;
             }
+        }
+    }
+
+    public void resort() {
+        List<Food> foods = new ArrayList<>();
+        for (Store store : stores) {
+            foods.addAll(store.findAll());
+            store.clear();
+        }
+        for (Food food : foods) {
+            distribute(food);
         }
     }
 }

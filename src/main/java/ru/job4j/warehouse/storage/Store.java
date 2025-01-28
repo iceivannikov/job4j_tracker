@@ -11,4 +11,6 @@ public interface Store {
     List<Food> findAll();
 
     boolean accept(Food food);
+
+    void clear();
 }
