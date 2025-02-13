@@ -1,11 +1,11 @@
-package ru.job4j.algorithms.partitionlabels;
+package ru.job4j.algorithms;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Solution {
+public class PartitionLabels {
     public List<Integer> partitionLabels(String s) {
         Map<Character, Integer> map = new HashMap<>();
         for (int i = 0; i < s.length(); i++) {
@@ -26,7 +26,7 @@ public class Solution {
 
     public static void main(String[] args) {
         String s = "eccbbbbdec";
-        Solution solution = new Solution();
+        PartitionLabels solution = new PartitionLabels();
         System.out.println(solution.partitionLabels(s));
     }
 }

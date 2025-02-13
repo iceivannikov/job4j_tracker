@@ -1,8 +1,8 @@
-package ru.job4j.algorithms.squaressortedarray;
+package ru.job4j.algorithms;
 
 import java.util.Arrays;
 
-public class Solution {
+public class SquaresSortedArray {
     public int[] sortedSquares(int[] nums) {
         int length = nums.length;
         int[] result = new int[length];
@@ -24,7 +24,7 @@ public class Solution {
     public static void main(String[] args) {
         int[] nums = new int[]{-4, -1, 0, 3, 10};
         int[] nums1 = new int[]{-7, -3, 2, 3, 11};
-        Solution solution = new Solution();
+        SquaresSortedArray solution = new SquaresSortedArray();
         System.out.println(Arrays.toString(solution.sortedSquares(nums)));
         System.out.println(Arrays.toString(solution.sortedSquares(nums1)));
     }

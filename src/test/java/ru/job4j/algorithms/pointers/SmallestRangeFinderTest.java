@@ -1,6 +1,8 @@
 package ru.job4j.algorithms.pointers;
 
 import org.junit.jupiter.api.Test;
+import ru.job4j.algorithms.SmallestRangeFinder;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SmallestRangeFinderTest {

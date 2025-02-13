@@ -1,9 +1,9 @@
-package ru.job4j.algorithms.subarraysumequalsk;
+package ru.job4j.algorithms;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Solution {
+public class SubArraySumEqualsK {
     public int subarraySum(int[] nums, int k) {
         int result = 0;
         int currentPrefixSum = 0;
@@ -22,7 +22,7 @@ public class Solution {
     public static void main(String[] args) {
         int[] nums = {1, 2, 3};
         int k = 3;
-        Solution solution = new Solution();
+        SubArraySumEqualsK solution = new SubArraySumEqualsK();
         System.out.println(solution.subarraySum(nums, k));
     }
 }

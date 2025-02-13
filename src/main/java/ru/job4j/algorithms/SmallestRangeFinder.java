@@ -1,4 +1,4 @@
-package ru.job4j.algorithms.pointers;
+package ru.job4j.algorithms;
 
 import java.util.Arrays;
 
