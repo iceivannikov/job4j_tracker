@@ -46,9 +46,28 @@ class QuickListTest {
         assertThat(list).containsExactly(10, 8, 1, 1, 0, -2, -8);
     }
 
+    @Test
+    void whenEmptyUserListThenOk() {
+        List<User> users = new ArrayList<>();
+        Comparator<User> comparator = Comparator.comparingInt(User::getId);
+        QuickList.quickSort(users, comparator);
+        assertThat(users).isEmpty();
+    }
+
+    @Test
+    void whenSingleUserThenOk() {
+        List<User> users = new ArrayList<>();
+        users.add(new User(1, "Alice"));
+        Comparator<User> comparator = Comparator.comparingInt(User::getId);
+        QuickList.quickSort(users, comparator);
+        assertThat(users).hasSize(1);
+        assertThat(users.get(0).id).isEqualTo(1);
+        assertThat(users.get(0).name).isEqualTo("Alice");
+    }
+
     private static class User {
-        private Integer id;
-        private String name;
+        private final Integer id;
+        private final String name;
 
         public User(int id, String name) {
             this.id = id;
