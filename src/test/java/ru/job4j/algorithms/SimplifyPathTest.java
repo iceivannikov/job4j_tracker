@@ -7,63 +7,63 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class SimplifyPathTest {
 
     @Test
-    public void whenPathEndsWithSlash_thenRemoveTrailingSlash() {
+    public void whenPathEndsWithSlashThenRemoveTrailingSlash() {
         SimplifyPath simplifier = new SimplifyPath();
         String result = simplifier.simplify("/home/");
         assertEquals("/home", result);
     }
 
     @Test
-    public void whenPathHasMultipleSlashes_thenReplaceWithSingleSlash() {
+    public void whenPathHasMultipleSlashesThenReplaceWithSingleSlash() {
         SimplifyPath simplifier = new SimplifyPath();
         String result = simplifier.simplify("/home//foo/");
         assertEquals("/home/foo", result);
     }
 
     @Test
-    public void whenPathHasParentDirectory_thenGoUpOneLevel() {
+    public void whenPathHasParentDirectoryThenGoUpOneLevel() {
         SimplifyPath simplifier = new SimplifyPath();
         String result = simplifier.simplify("/home/user/Documents/../Pictures");
         assertEquals("/home/user/Pictures", result);
     }
 
     @Test
-    public void whenPathGoesAboveRoot_thenReturnRoot() {
+    public void whenPathGoesAboveRootThenReturnRoot() {
         SimplifyPath simplifier = new SimplifyPath();
         String result = simplifier.simplify("/../");
         assertEquals("/", result);
     }
 
     @Test
-    public void whenPathHasCurrentDirectory_thenIgnoreIt() {
+    public void whenPathHasCurrentDirectoryThenIgnoreIt() {
         SimplifyPath simplifier = new SimplifyPath();
         String result = simplifier.simplify("/home/./user/./Documents");
         assertEquals("/home/user/Documents", result);
     }
 
     @Test
-    public void whenPathHasValidDots_thenTreatAsDirectory() {
+    public void whenPathHasValidDotsThenTreatAsDirectory() {
         SimplifyPath simplifier = new SimplifyPath();
         String result = simplifier.simplify("/.../a/../b/c/../d/./");
         assertEquals("/.../b/d", result);
     }
 
     @Test
-    public void whenPathIsRoot_thenReturnRoot() {
+    public void whenPathIsRootThenReturnRoot() {
         SimplifyPath simplifier = new SimplifyPath();
         String result = simplifier.simplify("/");
         assertEquals("/", result);
     }
 
     @Test
-    public void whenPathIsEmpty_thenReturnRoot() {
+    public void whenPathIsEmptyThenReturnRoot() {
         SimplifyPath simplifier = new SimplifyPath();
         String result = simplifier.simplify("");
         assertEquals("/", result);
     }
 
     @Test
-    public void whenPathHasComplexStructure_thenSimplifyCorrectly() {
+    public void whenPathHasComplexStructureThenSimplifyCorrectly() {
         SimplifyPath simplifier = new SimplifyPath();
         String result = simplifier.simplify("/a/b/../../c/");
         assertEquals("/c", result);
