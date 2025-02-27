@@ -21,7 +21,6 @@ class MainTest {
         assertThat(result).containsExactly(3, 4);
     }
 
-    @Disabled
     @Test
     public void whenSequentialIntervalsThenFindMaxOverlapInterval() {
         List<Interval> intervals = new ArrayList<>();

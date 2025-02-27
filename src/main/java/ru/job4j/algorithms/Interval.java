@@ -30,7 +30,7 @@ class Main {
         int maxStart = -1;
         int maxEnd = -1;
         for (Interval interval : intervals) {
-            while (!activeIntervals.isEmpty() && activeIntervals.peek().end <= interval.start) {
+            while (!activeIntervals.isEmpty() && activeIntervals.peek().end < interval.start) {
                 activeIntervals.poll();
             }
             activeIntervals.offer(interval);
@@ -38,6 +38,13 @@ class Main {
                 maxOverlap = activeIntervals.size();
                 maxStart = interval.start;
                 maxEnd = activeIntervals.peek().end;
+            }
+            while (maxStart == maxEnd) {
+                activeIntervals.poll();
+                if (!activeIntervals.isEmpty()) {
+                    maxStart = activeIntervals.peek().start;
+                    maxEnd = activeIntervals.peek().end;
+                }
             }
         }
         return new int[]{maxStart, maxEnd};
