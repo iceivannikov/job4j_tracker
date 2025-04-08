@@ -9,33 +9,33 @@ class StringCompressionTest {
     private final StringCompression compressor = new StringCompression();
 
     @Test
-    void whenStringHasAllUniqueCharacters_thenReturnSameCharacters() {
+    void whenStringHasAllUniqueCharactersThenReturnSameCharacters() {
         assertEquals("abcd", compressor.compress("abcd"));
     }
 
     @Test
-    void whenStringHasRepeatedCharacters_thenReturnCharacterWithCount() {
+    void whenStringHasRepeatedCharactersThenReturnCharacterWithCount() {
         String compressed = compressor.compress("aabbbcc");
         assertEquals(compressed, "a2b3c2");
     }
 
     @Test
-    void whenStringIsEmpty_thenReturnEmptyString() {
+    void whenStringIsEmptyThenReturnEmptyString() {
         assertEquals("", compressor.compress(""));
     }
 
     @Test
-    void whenStringHasOneCharacter_thenReturnSameCharacter() {
+    void whenStringHasOneCharacterThenReturnSameCharacter() {
         assertEquals("a", compressor.compress("a"));
     }
 
     @Test
-    void whenStringHasAllSameCharacter_thenReturnCharacterWithCount() {
+    void whenStringHasAllSameCharacterThenReturnCharacterWithCount() {
         assertEquals("a5", compressor.compress("aaaaa"));
     }
 
     @Test
-    void whenStringHasMixedCaseCharacters_thenTreatSeparately() {
+    void whenStringHasMixedCaseCharactersThenTreatSeparately() {
         String compressed = compressor.compress("aAaaA");
         assertTrue(compressed.contains("a3A2"));
     }

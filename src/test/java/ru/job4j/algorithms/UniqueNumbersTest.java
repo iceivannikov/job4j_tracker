@@ -34,29 +34,30 @@ class UniqueNumbersTest {
         int[] expected = {};
         assertArrayEquals(expected, uniqueNumbers.findUnique(input));
     }
+
     @Test
-    void whenSingleElement_thenReturnSameElement() {
+    void whenSingleElementThenReturnSameElement() {
         int[] input = {7};
         int[] expected = {7};
         assertArrayEquals(expected, uniqueNumbers.findUnique(input));
     }
 
     @Test
-    void whenDuplicatesAtStart_thenReturnUniqueFromMiddleAndEnd() {
+    void whenDuplicatesAtStartThenReturnUniqueFromMiddleAndEnd() {
         int[] input = {1, 1, 2, 3, 4, 5};
         int[] expected = {2, 3, 4, 5};
         assertArrayEquals(expected, uniqueNumbers.findUnique(input));
     }
 
     @Test
-    void whenDuplicatesAtEnd_thenReturnUniqueFromStartAndMiddle() {
+    void whenDuplicatesAtEndThenReturnUniqueFromStartAndMiddle() {
         int[] input = {1, 2, 3, 4, 5, 5};
         int[] expected = {1, 2, 3, 4};
         assertArrayEquals(expected, uniqueNumbers.findUnique(input));
     }
 
     @Test
-    void whenElementAppearsThreeTimes_thenNotIncluded() {
+    void whenElementAppearsThreeTimesThenNotIncluded() {
         int[] input = {1, 1, 1, 2, 3, 3, 4};
         int[] expected = {2, 4};
         assertArrayEquals(expected, uniqueNumbers.findUnique(input));
